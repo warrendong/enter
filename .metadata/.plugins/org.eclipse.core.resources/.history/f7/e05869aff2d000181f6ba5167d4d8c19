@@ -92,24 +92,6 @@ public class UserDao {
 			user.setPhone(re.getString("phone"));
 			list.add(user);
 		}
-		Connect1.closesql(conn);
 		return list;
-	}
-	/**
-	 * 计算最大页数
-	 * @throws SQLException 
-	 * */
-	public int getMaxPage() throws SQLException{
-		int maxpage=0;
-		String sql="select count(*) from tb_user";
-		Connection conn=null;
-		conn=Connect1.getconnect();
-		Statement stmt=conn.createStatement();
-		ResultSet re=stmt.executeQuery(sql);
-		re.next();
-		//获取tb_user表中的所有数据个数
-		int records=re.getInt(1);
-		maxpage=records%6==0?records/6:records/6+1;
-		return maxpage;
 	}
 }
