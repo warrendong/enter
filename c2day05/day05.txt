@@ -1,0 +1,29 @@
+day05
+==============================
+JDBC
+
+create table t_user(
+	id int(6) primary key auto_increment,
+	username varchar(20),
+	password varchar(20),
+	email varchar(50),
+	phone varchar(20),
+	type char(1)
+);
+
+前端--(服务器)-->Servlet------>JDBC----->DB
+实体类
+
+
+搬家
+A（将生活物品打包）
+
+B(接收到包)
+
+需求：
+* 添加账号
+* 根据ID删除账号
+* 修改账号邮箱和手机号
+* 修改账号的密码
+* 根据ID查询账号信息
+* 查询所有账号信息
