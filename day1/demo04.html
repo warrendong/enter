@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css样式复习</title>
+		<link href="css/demo.css" />
+		<style type="text/css">
+			/**类选择器**/
+			.mydiv{
+				color: blue;
+				font-size: 60px;
+				border: 1px solid mediumpurple;
+				width: 300px;
+				height: 80px;
+			}
+			/** ID选择器**/
+			#mydiv{
+				color: blue;
+				font-size: 60px;
+				border: 1px solid mediumpurple;
+				width: 300px;
+				height: 80px;
+			}
+			/**组选择器**/
+			div,span,h3{
+				color: paleturquoise;
+				font-size: 60px;
+				border: 1px solid darkslategray;
+				width: 300px;
+				height: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>css的基本使用</h1>
+		<hr />
+		<div style="color: red; font-size: 15px; border: 3px solid green ; width: 300px; height: 50px">内联样式表</div>
+		<div class="mydiv">内部样式表</div>
+		<div>
+			<span>
+				<h3>组选择器</h1>
+			</span>
+		</div>
+		<div class="demo1">外部样式表</div>
+	</body>
+</html>

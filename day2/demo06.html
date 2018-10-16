@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式</title>
+		<script type="text/javascript">
+			function press(){
+				var str="123";
+				var str2="aaa";
+				var reg=/[0123456789][0123456789][0123456789]/;
+				var reg2=new RegExp("[0123456789][0123456789][0123456789]");
+				var reg3=/^\d{3,10}$/; /*6到10位数字*/
+				console.log(reg.test(str));
+				console.log(reg2.test(str2));
+				console.log(reg3.test(str2));
+				console.log(reg3.test(str));
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="测试" onclick="press();" />
+	</body>
+</html>

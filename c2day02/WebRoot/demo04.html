@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Html CSS</title>
+    <meta charset="GBK">
+    <script type="text/javascript">
+    	//演示String对象
+    	function test01(){
+        	var str1 = "abcDEF";
+        	var str2 = new String("abcDEF");
+        	console.log(typeof str2);
+        	var str3 = str1.toLowerCase();
+        	console.log(str3);
+        	console.log(str3.length);
+        	var str4 = str3.substring(2,5);
+        	console.log(str4);
+        }
+        //演示Math对象
+        //获取0-10之间的随机数
+        function test02(){
+            //获取一个0-1之间的随机数
+			var n = Math.random();
+			//console.log(n);
+			n = n*10;
+			//console.log(n);
+			n = Math.round(n);
+			console.log(n);
+			console.log(Math.PI);
+			console.log(Math.floor(5.9));//最小整数（地板）
+			console.log(Math.ceil(5.1));//最大整数(天花板)
+        }
+        //演示日期对象
+        function test03(){
+			var date = new Date();
+			console.log(date);
+			//toLocaleString()，获取本地时间的字符串形式
+			var strDate = date.toLocaleString();
+			console.log(strDate);
+			var year = date.getFullYear();
+			var month = date.getMonth()+1;//1月-0
+			console.log(year+"年"+month+"月");
+        }
+		//网页中显示当前时间
+        function showTime(){
+			var date = new Date();
+			var strDate = date.toLocaleString();
+			var div = document.getElementById("div0");
+			div.innerHTML = strDate;
+        }
+    </script>
+  </head>
+  <body onload="showTime();">
+  <h1>JS常用对象-String对象</h1>
+  <input type="button" value="test01()" onclick="test01()">
+  <h1>JS常用对象-Math对象</h1>
+  <input type="button" value="test02()" onclick="test02()">
+  <h1>JS常用对象-Date对象</h1>
+  <input type="button" value="test03()" onclick="test03()">
+  <h2 id="div0"></h2>
+  </body>
+</html>

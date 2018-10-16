@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Html CSS</title>
+    <meta charset="GBK">
+    <style type="text/css">
+    	span{
+    		color: red;
+    		font-size: 10px;
+    	}
+    </style>
+    <script type="text/javascript">
+    	/*
+    	账号:必须是6-12位单词字符
+    	密码:6-12字母
+    	邮箱:aaa@aaa.com
+    	电话:手机号
+    	*/
+    	//验证账号
+    	function checkUserName(){
+			var reg = /^\w{6,12}$/;
+			var userName = document.getElementById("userName").value;
+			var r = reg.test(userName);
+			var sp = document.getElementById("unerror");
+			sp.innerHTML = "";
+			if(!r){
+				sp.innerHTML = "账号格式错误！";
+				return false;
+			}
+			return true;
+        }
+        //验证密码
+        function checkPassword(){
+        	var reg = /^[a-zA-Z]{6,12}$/;
+			var password = document.getElementById("password").value;
+			var r = reg.test(password);
+			var sp = document.getElementById("upwderror");
+			sp.innerHTML = "";
+			if(!r){
+				sp.innerHTML = "密码格式错误！";
+				return false;
+			}
+			return true;
+        }
+        //验证邮箱
+        function checkEmail(){
+        	var reg = /^\w+@\w+\.\w+$/;
+			var email = document.getElementById("email").value;
+			var r = reg.test(email);
+			var sp = document.getElementById("umerror");
+			sp.innerHTML = "";
+			if(!r){
+				sp.innerHTML = "邮箱格式错误！";
+				return false;
+			}
+			return true;
+        }
+        //验证手机号  1 345678
+        function checkPhone(){
+            var reg = /^[1][3-8]\d{9}$/;
+			var phone = document.getElementById("phone").value;
+			var r = reg.test(phone);
+			var sp = document.getElementById("uperror");
+			sp.innerHTML = "";
+			if(!r){
+				sp.innerHTML = "手机号格式错误！";
+				return false;
+			}
+			return true;
+        }
+
+        function checkForm(){
+        	var r1 = checkUserName();
+        	var r2 = checkPhone();
+        	var r3 = checkPassword();
+        	var r4 = checkEmail();
+        	return r1&&r2&&r3&&r4;
+        }
+    </script>
+  </head>
+  <body>
+  <h1>商城用户注册</h1><hr/>
+	<form action="demo05.html" method="post">
+	<table>
+  		<tr>
+  			<td>账号：</td>
+  			<td>
+  				<input type="text" name="username" id="userName" onblur="checkUserName();"/>
+  				<span id="unerror"></span>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>密码：</td>
+  			<td>
+  				<input type="password" name="password" id="password" onblur="checkPassword();"/>
+  				<span id="upwderror"></span>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>邮箱：</td>
+  			<td>
+  				<input type="text" name="email" id="email" onblur="checkEmail();"/>
+  				<span id="umerror"></span>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>电话：</td>
+  			<td>
+  				<input type="text" name="phone" id="phone" onblur="checkPhone();"/>
+  				<span id="uperror"></span>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td colspan="2">
+  				<input type="submit" value="注册" id="loginBtn" onclick="return checkForm();"/>
+  			</td>
+  		</tr>
+	</table>
+	</form>
+  </body>
+</html>

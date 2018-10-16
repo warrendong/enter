@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Html HelloWorld</title>
+    <meta charset="GBK">
+  </head>
+  <body>
+  	<h1>用户登录表单</h1>
+  	<hr/>
+  	<!-- 
+  	  1、form定义表单
+  	     action属性，表单数据提交的目的地
+  	     mothod属性，设置提交方式  get/post
+  	           开发中定义表单，method都设置为post
+  	  2、 input输入表单域
+  	     type属性指定哪种输入域
+  	     text,文本框，password,密码框
+  	     submit、提交按钮，提交整个表单数据
+  	     reset、重置按钮
+  	           输入域中name属性必须指定
+  	 -->
+  	<form action="demo01.html" method="post">
+  		账号:<input type="text" name="username"/><p>
+  		密码:<input type="password" name="password"/><p>
+  		<input type="submit" value="登录"/>
+  		<input type="reset" value="重置"/>
+  	</form>
+  </body>
+</html>

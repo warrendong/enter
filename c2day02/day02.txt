@@ -1,0 +1,58 @@
+day02
+================================
+1、html+css案例
+2、JavaScript
+     什么是JavaScript?
+     动作行为 提高网页与用户的交互性
+     脚本语言：计算机语言（编程语言，数据类型，变量，语句，流程控制，基于对象）
+  JS嵌入到HTML中 
+    由浏览器直接解释执行
+    由事件驱动执行
+    
+3、JS的基本语法
+  * JS代码如何嵌入到Html中？
+    1）、直接嵌入到标记中
+    2）、定义在<script>标记中
+    3）、单独的js文件，html导入该JS文件
+  * JS的数据类型
+    number 数值类型
+    string 字符串类型  "哈哈哈" 'hahaha'
+    boolean true false
+    null
+    undefined
+    object
+  * 变量
+    java：int i = 20;double price = 300;
+    js:var age = 20;
+    JS属于弱类型语言 定义变量不需要指定类型 变量的类型根据值确定 变量的类型可以随意改变
+       var i = 20;//i number类型
+       i = "吕梁学院";//i string类型
+  * 运算符
+    + - * / % ++ -- =
+    > < >= <= == ===
+    & | ！ ，二进制位运算符
+    && || ！，逻辑运算符
+  * 语句
+        循环：for while do...while
+        条件：if...else
+    switch语句
+
+4、JS中常用对象
+   String对象、Math对象、Date对象、RegExp对象
+     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+  
+   

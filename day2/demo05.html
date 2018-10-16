@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>显示日期</title>
+		<script type="text/javascript">
+			function showdata(){
+				var date=new Date();
+				var strdate= date.toLocaleString();
+				var div=document.getElementById("sda");
+				div.innerHTML=strdate;
+			}
+		</script>
+	</head>
+	<body onload="showdata();">
+		<div id="sda"></div>
+	</body>
+</html>

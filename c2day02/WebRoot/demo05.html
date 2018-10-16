@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Html CSS</title>
+    <meta charset="GBK">
+    <script type="text/javascript">
+    	//演示RegExp对象
+    	/*
+    	正则对象
+    	正则表达式，用来验证字符串是否满足一定规则
+    	*/
+    	function test01(){
+        	//需求：验证一个字符串是否是3位数字
+        	var str = "a12";
+        	var str1 = new String("a12");
+        	var reg = /[0123456789][0123456789][0123456789]/;
+        	var reg1 = new RegExp("[0123456789][0123456789][0123456789]");
+        	console.log(typeof reg1);
+        	console.log(reg1.test(str));
+        }
+        function test02(){
+			var reg1 = /^[0123456789]{6,10}$/;
+			reg1 = /^\d{6,10}$/;
+			var str = "122666";
+			console.log(reg1.test(str));
+        }
+        //需求：6-10字母
+        function test03(){
+			var reg = /^[a-zA-Z]{6,10}$/;
+			var str = "abcddA1sd";
+			console.log(reg.test(str));
+        }
+        //需求:6-10位字符数字字母下划线组合,\w表示单词字符
+        function test04(){
+			var reg = /^\w{6,10}$/;
+			var str = "a0a0_0";
+			console.log(reg.test(str));
+        }
+        //需求:2代身份证    18   17X    17x    第一位不能是0  
+        function test05(){
+			var reg = /^[1-9]\d{16}(\d|X|x)$/;
+			var idCard = "123434199802122310";
+			console.log(reg.test(idCard));
+        }
+        //需求:邮箱 aaa@aaa.com  
+        function test06(){
+			var reg = /^\w+@\w+\.\w+$/;
+			var email = "a-aa.a@a";
+			console.log(reg.test(email));
+        }
+    </script>
+  </head>
+  <body>
+  <h1>JS常用对象-正则对象</h1>
+  <input type="button" value="test01()" onclick="test01()">
+  <input type="button" value="test02()" onclick="test02()">
+  <input type="button" value="test03()" onclick="test03()">
+  <input type="button" value="test04()" onclick="test04()">
+  <input type="button" value="test05()" onclick="test05()">
+  <input type="button" value="test06()" onclick="test06()">
+  </body>
+</html>

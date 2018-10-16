@@ -1,0 +1,172 @@
+day03
+==================================
+mysql数据库
+SQL
+* 表的管理
+  常用的数据类型：
+    int
+    double
+    varchar
+    char
+    date
+    timestamp
+  约束：
+    primary key 主键约束   非空唯一
+    foreign key 外键约束   值引用其他的主键
+    not null  非空
+    unique    唯一
+
+创建数据库：create database lxdb default charset utf8;
+应用数据库：use lxdb;
+创建表：
+    create table t_user(
+    	id int(4) primary key auto_increment,
+    	username varchar(20),
+    	password varchar(20),
+    	email varchar(50),
+    	phone varchar(20)    	
+    );    
+需求：创建员工表和部门表
+        部门表：
+    create table dept(
+    	deptno int(2) primary key auto_increment,
+    	dname varchar(50),
+    	loc varchar(100)
+    )default charset utf8;
+        员工表：
+    create table emp(
+    	empno int(6) primary key auto_increment,
+    	ename varchar(20),
+    	sal double(8,2),
+    	job varchar(20),
+    	hiredate date,
+    	deptno int(2)    	
+    )default charset utf8;
+        修改表，添加外键
+    alter table emp add foreign key(deptno) references dept(deptno);
+        删除表
+    drop table t_user;  
+    
+* insert update delete select
+  
+  insert:添加记录
+  insert into t_user values(null,'zs1001','123456','zs@163.com','13566666666');
+  insert into t_user(username,password) values('lisi','aaaaaa');
+    需求：
+    创建4个部门分别是 软件研发部，教学部，财务部，人事部
+    分别向3个部门中添加4个普通员工，1个经理
+    添加部门数据：
+    insert into dept values(10,'软件研发部','吕梁学院计算机系教学楼301');
+    insert into dept values(20,'教学部','吕梁学院计算机系教学楼303');
+    insert into dept values(30,'财务部','吕梁学院计算机系教学楼305');
+    insert into dept values(40,'人事部','吕梁学院计算机系教学楼304');
+     添加员工数据:
+    insert into emp values(7000,'King','20000','president','2010-1-1',10);  
+    insert into emp values(7001,'曹肃','16000','mgr','2012-3-1',10);
+    insert into emp values(7002,'柴苗苗','15000','mgr','2011-5-19',20);
+    insert into emp values(7003,'陈琦','15500','mgr','2011-10-10',30);
+    
+    insert into emp values(7004,'崔鑫','9500','职员','2018-3-1',10);
+    insert into emp values(7005,'董文华','8700','职员','2017-4-19',10);
+    insert into emp values(7006,'管丹梅','7600','职员','2016-3-19',10);
+    insert into emp values(7007,'郝思聪','9000','职员','2018-9-18',10);
+    
+    insert into emp values(7008,'贺鑫辉','5500','职员','2018-10-10',30);
+    insert into emp values(7009,'李司','5800','职员','2014-9-18',30);
+    insert into emp values(7010,'刘登','6000','职员','2012-8-8',30);
+    insert into emp values(7011,'刘梦颖','5000','职员','207-7-15',30);
+    
+    insert into emp values(7012,'潘泽祥','13000','讲师','2010-12-19',20);
+    insert into emp values(7013,'乔雨辰','12000','讲师','2013-5-19',20);
+    insert into emp values(7014,'任义','14000','讲师','2012-8-10',20);
+    insert into emp values(7015,'王喆','13500','讲师','2014-12-19',20);
+
+  delete:删除记录
+    delete from emp where empno=7015;
+  update:修改记录
+    update emp set sal=sal+50;
+    update emp set sal=sal+500 where sal<10000;
+    
+  select:查询记录
+   基本查询：
+    select ename,sal,hiredate from emp;
+    select * from emp;
+   条件查询：
+    select ename,sal,hiredate from emp where hiredate>'2012-1-1';
+    select ename,sal,hiredate from emp where sal=13000;
+       需求：列出公司内部讲师的姓名，工资，入职日期
+    select ename,sal,hiredate from emp where job='讲师';
+       需求：列出公司中姓刘的员工信息
+    select empno,ename,sal,job,hiredate,deptno from emp
+    where ename like '刘%';
+       需求：列出公司中名字有鑫的员工姓名，工资，入职日期，职位
+    select ename,sal,hiredate,job from emp
+    where ename like '%鑫%';
+        需求：列出10、20号部门的员工信息
+    select empno,ename,sal,job,hiredate,deptno from emp
+    where deptno=10 or deptno=20;
+    select empno,ename,sal,job,hiredate,deptno from emp
+    where deptno in(10,20);
+  排序查询：
+    order by  参考字段
+    asc升序
+    desc 降序
+        数字大小
+        时间早晚
+    需求：列出员工姓名，工资，职位，入职日期根据日期的先后顺序排序
+    select ename,sal,job,hiredate from emp
+    order by hiredate asc;
+    需求：列出员工姓名，工资，职位，入职日期根据工资降序排序
+    select ename,sal,job,hiredate from emp
+    order by sal desc;
+    
+  分组查询：
+  group by 分组字段
+    组函数
+    sum(),avg(),max(),min(),count()
+    需求：公司每个月要向每个部门的员工支付的薪水
+    select deptno,sum(sal) from emp group by deptno;
+    需求：公司每个部门的员工的平均薪水多少？
+    select deptno,avg(sal) from emp group by deptno;
+    需求：统计每个部门多少个员工
+    select deptno,count(*) from emp group by deptno;
+    需求：统计公司一共有多少个员工
+    select count(*) from emp;
+    
+ 子查询：
+    普通子查询
+    需求：列出员工曹肃的同部门同事的姓名，工资，职位，入职日期
+  select ename,sal,job,hiredate from emp
+  where deptno=(select deptno from emp where ename='曹肃')
+  and ename!='曹肃';  
+    关联子查询 
+    需求：列出比本部门平均工资高的员工姓名，工资，职位，入职日期，部门号
+  select ename,sal,job,hiredate,deptno from emp e
+  where 
+  sal>(select avg(sal) from emp where deptno=e.deptno);
+  
+ 关联查询（多表查询）
+    需求：列出员工姓名，工资，入职日期，部门号，部门名，部门地址
+  select ename,sal,hiredate,e.deptno,dname,loc from emp e,dept d;
+    多表查询没有指定联合条件，会出现笛卡尔乘积现象
+  等值查询
+  select ename,sal,hiredate,e.deptno,dname,loc from emp e,dept d where e.deptno=d.deptno;
+  内连接查询
+  select ename,sal,hiredate,e.deptno,dname,loc from emp e inner join dept d on e.deptno=d.deptno;
+  左外连接查询 
+  select ename,sal,hiredate,e.deptno,dname,loc from emp e left outer join dept d on e.deptno=d.deptno;
+  
+  
+    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    
+    

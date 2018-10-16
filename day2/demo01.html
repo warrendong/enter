@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js嵌入到HTML中的方式一</title>
+		<script type="text/javascript" src="js/demo.js"></script>
+		<script type="text/javascript">
+			function test(){
+				alert("你还好吗？");
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="点击看看"  onclick="alert('你好吗？');" /><br />
+		<input type="button" value="再次点击看看"  onclick="test();" /><br />
+		<input type="button" value="最后点击看看"  onclick="test2();" />
+	</body> 
+</html>

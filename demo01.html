@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Html CSS</title>
+    <meta charset="GBK">
+    <style>
+    	#loginBtn{
+    		width: 100px;
+    		height: 20px;
+    	}
+    	#rwin{
+    		width: 600px;
+    		height:300px;
+    		border: 1px solid #929292;
+    		padding: 0px;
+    		display: none;
+    	}
+    	#title{
+    		width: 600px;
+    		height:30px;
+    		background-color: #0000ff;
+    		color: #ffffff;
+    		line-height: 30px;
+    	}
+    	#cls{
+    		margin-left: 520px;
+    		font-size: 30px;
+    		cursor: pointer;
+    	}
+    	#content{
+    		background-color: #e2e2e2;
+    		width: 600px;
+    		height:270px;
+    	}
+    </style>
+    <script type="text/javascript">
+    	function showWin(){
+        	//获取到div对象
+			var win = document.getElementById("rwin");
+			win.style.display = "block";
+        }
+    	function hidWin(){
+        	//获取到div对象
+			var win = document.getElementById("rwin");
+			win.style.display = "none";
+        }
+    </script>
+  </head>
+  <body>
+  <h1>商城用户登录</h1><hr/>
+  <form action="login.do" method="post">
+  	<table>
+  		<tr>
+  			<td>账号：</td>
+  			<td>
+  				<input type="text" name="username"/>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>密码：</td>
+  			<td>
+  				<input type="password" name="password"/>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td colspan="2">
+  				<input type="submit" value="登录" id="loginBtn"/>
+  			</td>
+  		</tr>
+  	</table>
+  	<a href="javascript:;" onclick="showWin();">新用户注册</a>
+  	<div id="rwin">
+  		<div id="title">用户注册<span id="cls" onclick="hidWin();">X</span></div>
+  		<div id="content">
+  			新用户注册表单
+  			<form action="" method="post">
+  				<table>
+			  		<tr>
+			  			<td>账号：</td>
+			  			<td>
+			  				<input type="text" name="username"/>
+			  			</td>
+			  		</tr>
+			  		<tr>
+			  			<td>密码：</td>
+			  			<td>
+			  				<input type="password" name="password"/>
+			  			</td>
+			  		</tr>
+			  		<tr>
+			  			<td>邮箱：</td>
+			  			<td>
+			  				<input type="email" name="email"/>
+			  			</td>
+			  		</tr>
+			  		<tr>
+			  			<td>电话：</td>
+			  			<td>
+			  				<input type="text" name="phone"/>
+			  			</td>
+			  		</tr>
+			  		<tr>
+			  			<td colspan="2">
+			  				<input type="submit" value="注册" id="loginBtn"/>
+			  			</td>
+			  		</tr>
+  				</table>
+  				
+  			</form>
+  		</div>
+  	</div>
+  </form>
+  </body>
+</html>

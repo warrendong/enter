@@ -1,0 +1,76 @@
+create database student defalut charset utf8;
+创建表和修改表（create  drop  alter）
+
+create table  t_user(
+ID int(4) primary key auto_increment,
+user char(20),
+pwd char(30),
+iphone char(11),
+email char(30)
+);
+create table t_depart(
+dno int(10) primary key auto_increment,
+dname varchar(50),
+dloc varchar(100)
+);
+create table t_man(
+mid int(10) primary key auto_increment,
+mname varchar(30),
+mphone varchar(11),
+msalary  double(8,2),
+mjob varchar(20),
+mhire date,
+mdno int(10)
+);
+alter table t_man add foreign key(mdno) references t_depart(sno);
+
+
+数据处理（insert delect update）
+
+insert into t_user values (null,'zhangsan','123456','15696236652','ajdf@163.com' );
+insert into t_user(user,pwd,email,iphone) values('lisi','123456','fdg@qq.com','12355485585'); 
+insert into t_depart values(101,'教学部','三号楼4层');
+insert into t_depart(dname,dloc) values('软件研发部','电教楼3楼');
+insert into t_depart(dname,dloc) values('财务部','电教楼1楼');
+insert into t_depart(dname,dloc) values('人事部','行政楼5楼');
+insert into t_man values(30102,'ben',1856252323,200000,'人事处理','2001-2-3',104);
+insert into t_man values(20103,'nuo',1333596665,350000,'人事经理','1996-3-10',104);
+insert into t_man values(20909,'king',1236525152,9999999,'CEO','1992-6-10',101);
+insert into t_man values(30109,'yu',1235151514,35262,'教学主任','2005-3-29',101);
+insert into t_man values(30103,'ji',1265625555,350000,'教学经理','1996-3-10',101);
+insert into t_man values(40103,'su',1333626665,350000,'研发经理','1996-3-10',102);
+insert into t_man values(50103,'feng',1333525565,350000,'财务经理','1996-3-10',103);
+insert into t_man values(40104,'封',1333626665,13500,'普通员工','1998-3-10',102);
+insert into t_man values(40105,'与',1333626665,13500,'普通员工','1998-3-10',102);
+insert into t_man values(40106,'地',1333626665,13500,'普通员工','1998-3-10',102);
+insert into t_man values(40107,'填',1333626665,13500,'普通员工','1998-3-10',102);
+insert into t_man values(50104,'feng',1333525565,12300,'普通员工','2006-2-10',103);
+insert into t_man values(null,'gao',1333525565,12300,'普通员工','2006-2-10',103);
+insert into t_man values(null,'dg',1333525565,12300,'普通员工','2006-2-10',103);
+insert into t_man values(null,'egg',1333525565,12300,'普通员工','2006-2-10',103);
+
+update t_man set msalary=msalary+500;
+查询
+	条件查询：一般开发中不使用*这个字符，会增加系统的负担--------因为 系统需要将*转化为全部字段名之后才开始查询
+    排序查询：
+		order by
+		ASC升序和DESC降序
+		select mname,mid from t_man order by mid; 
+	分组查询：
+		group by 
+		select dname,avg(msalary) from t_man,t_depart where t_man.mdno=t_depart.dno group by mdno; 
+    子查询：
+		select mname,mjob,dname from t_man,t_depart where t_depart.dno=t_man.mdno and mdno=(select mdno from t_man where mname='king');
+		普通子查询
+		关联子查询
+	关联查询（多表查询）
+		多表查询若没有指定联合查询时，默认采用笛卡尔积乘积查询
+		等值查询
+			
+		内连接查询
+			
+		左外连接查询
+			
+		右外连接查询
+		
+	
