@@ -23,7 +23,71 @@ B(接收到包)
 需求：
 * 添加账号
 * 根据ID删除账号
-* 修改账号邮箱和手机号
+* 根据ID修改账号邮箱和手机号
 * 修改账号的密码
 * 根据ID查询账号信息
 * 查询所有账号信息
+* 分页查询
+* 计算最大页数
+  42条    select count(*) from t_user;
+    每页显示6条
+  7页
+  
+  int records = 42;
+  int pageSize = 6;
+  int maxPage = records%pageSize==0?records/pageSize:records/pageSize+1;
+  
+  
+JDBC的事务处理：
+   数据库端：
+   事务： 一组操作的逻辑单元 
+   有些特定的需求，需要一组JDBC的操作完成，必须保证这组操作是一个整体
+   事务的特点：
+   * 原子性  实现一个事务中一组操作要么都成功，要么都失败 
+   * 隔离性
+   * 一致性
+   * 持久性  
+    事务操作：提交（commit） 回滚(rollback)
+    事务的提交：
+          命令提交，数据库服务器出现意外也会自动提交事务
+    转账
+    设置事务的提交方式为非自动提交
+    update....-
+    update....+
+     提交事务
+     回滚事务 
+  结论：只要增删改影响多条记录，都必须使用事务处理 
+  转账案例：
+   * 表
+   create table t_account(
+   	id int(6) primary key auto_increment,
+   	account varchar(20),
+   	balance double(12,2)
+   );
+    
+JDBC的批处理
+需求：批量添加数据（添加1000条记录）
+   * 表
+   create table t_log(
+   	id int(6) primary key auto_increment,
+   	title varchar(50),
+   	content varchar(100)
+   );
+    
+  
+     
+      
+ 
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
