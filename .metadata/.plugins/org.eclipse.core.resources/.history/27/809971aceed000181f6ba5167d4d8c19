@@ -1,0 +1,39 @@
+package com.util;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import com.cn.entity.User;
+import com.cn.servlet.UserDao;
+
+public class testdemo {
+	public static void main(String[] args) throws SQLException {
+		User user=new User();
+		Scanner input =new Scanner(System.in);
+		System.out.println("注册操作");
+		System.out.println("id：");
+		int id=input.nextInt();
+		System.out.println("用户名：");
+		String name=input.next();
+		System.out.println("密码：");
+		String pwd=input.next();
+		System.out.println("邮箱：");
+		String email=input.next();
+		System.out.println("手机：");
+		String phone=input.next();
+		user.setId(id);
+		user.setUsername(name);		
+		user.setPassword(pwd);
+		user.setEmail(email);
+		user.setPhone(phone);
+		UserDao.save(user);
+		System.out.println("请输入你要查询的名字：");
+		String username=input.next();
+		UserDao.select(user, username);
+		UserDao.delete(user, 2);
+		UserDao.select(user, "夏娜");
+		UserDao.update(user, "123456789");
+		UserDao.select(user, "张杰");
+		
+	}
+}

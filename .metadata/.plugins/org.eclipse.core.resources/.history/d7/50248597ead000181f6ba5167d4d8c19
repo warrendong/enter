@@ -1,0 +1,16 @@
+package com.util;
+
+import com.cn.entity.User;
+import com.cn.servlet.UserDao;
+
+public class testdemo {
+	public static void main(String[] args) {
+		User user=new User();
+		user.setId(2);
+		user.setUsername("уе╫э");
+		user.setPassword("123456");
+		user.setEmail("15552@qq.com");
+		user.setPhone("1556568");
+		UserDao.save(user);
+	}
+}

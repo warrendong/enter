@@ -1,0 +1,25 @@
+package com.util;
+
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import com.cn.entity.User;
+import com.cn.servlet.UserDao;
+
+public class testdemo {
+	public static void main(String[] args) throws SQLException {
+		User user=new User();
+		user.setId(2);
+		user.setUsername("张杰");		
+		user.setPassword("123456");
+		user.setEmail("15552@qq.com");
+		user.setPhone("1556568");
+		UserDao.save(user);
+		UserDao.select(user, "张杰");
+		UserDao.delete(user, 2);
+		UserDao.select(user, "张杰");
+		UserDao.update(user, "123456789");
+		UserDao.select(user, "张杰");
+		
+	}
+}
