@@ -1,0 +1,61 @@
+day07
+==============================
+Java Web
+Servlet JSP
+
+前端----->(服务器)------>Servlet\JSP------>JDBC----->DB
+
+登录业务功能：
+   登录页（HTML、JSP）
+   接收登录请求（Servlet,接收登录用户的账号和密码，调用JDBC）
+   登录数据访问（JDBC，根据账号和密码查询数据）
+   
+JSP
+login.jsp---->doLogin.jsp(接数据，访问数据库)
+jsp:HTML CSS JavaScript Java 逻辑处理  访问数据库
+
+JSP + JavaBean Model1
+login.jsp---->doLogin.jsp---->UserDao
+                  |---->成功，跳转到main.jsp
+                  |---->失败，跳转到login.jsp
+                  
+JSP + Servlet + JavaBean Model2
+login.jsp---->LoginServlet---->UserDao
+                  |---->成功，跳转到main.jsp
+                  |---->失败，跳转到login.jsp
+                  
+JSP:只做页面、视图
+Servlet:接收请求 控制调用哪些数据处理 控制处理结果 控制用户在系统的走向 控制器
+JavaBean:(java类，Entity、Dao)模型
+模型（Model）视图(View)控制器(Controller)组合
+MVC
+
+Servlet:运行在特定容器中的组件规范，基于请求和响应的功能组件
+http://192.168.54.2:80/c2day07/login.html
+
+JSP:
+* JSP基本语法
+* JSP指令
+* EL
+* JSTL标签
+
+* JSP基本语法
+  1、JSP文件扩展名.jsp
+  2、JSP中直接书写html,css,js
+  3、JSP可以写JAVA代码段
+    <% %>
+* JSP指令
+   page指令：<%@ page %>,设置页面的全局属性
+   include指令<%@ include %>，静态包含
+   taglib指令<%@ taglib %>，导入其他标签库
+
+Java Web项目通常页面都是用JSP
+
+
+
+
+
+
+
+
+
