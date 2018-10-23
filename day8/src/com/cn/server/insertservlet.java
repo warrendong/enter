@@ -15,19 +15,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
 import com.cn.date.Connect;
-import com.cn.pack.userinfo;
 
 /**
- * Servlet implementation class deluserservlet
+ * Servlet implementation class insertservlet
  */
-@WebServlet("/deluserservlet")
-public class deluserservlet extends HttpServlet {
+@WebServlet("/insertservlet")
+public class insertservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public deluserservlet() {
+    public insertservlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -53,28 +52,28 @@ public class deluserservlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		String name=request.getParameter("user");
-		String sql="delete from tb_user where user=?";
-		Connection conn=Connect.getConnect();
-		PreparedStatement pasmt;
+		String email=request.getParameter("email");
+		int phone =Integer.parseInt(request.getParameter("phone"));
+		String sql="insert into tb_user values(null,?,null,?,?,0)";
+		Connection conn=null;
+		conn=Connect.getConnect();
+		PreparedStatement pstmt;
 		try {
-			pasmt = conn.prepareStatement(sql);
-			pasmt.setString(1,name);
-			int re=pasmt.executeUpdate();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			pstmt.setInt(3, phone);
+			int re=pstmt.executeUpdate();
 			if(re>0)
 			{
-				System.out.println("数据删除成功");
+				System.out.println("插入操作成功");
 				response.sendRedirect("findAllservlet");
-			}else {
-				request.setAttribute("delback", "删除失败，请重试！！！");
-				request.getRequestDispatcher("findAllservlet").forward(request, response);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			Connect.closeConnect(conn);
 		}
-		
+		Connect.closeConnect(conn);
 	}
 
 }

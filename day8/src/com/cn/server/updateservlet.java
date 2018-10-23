@@ -15,19 +15,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
 import com.cn.date.Connect;
-import com.cn.pack.userinfo;
 
 /**
- * Servlet implementation class deluserservlet
+ * Servlet implementation class updateservlet
  */
-@WebServlet("/deluserservlet")
-public class deluserservlet extends HttpServlet {
+@WebServlet("/updateservlet")
+public class updateservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public deluserservlet() {
+    public updateservlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -53,7 +52,7 @@ public class deluserservlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		String name=request.getParameter("user");
-		String sql="delete from tb_user where user=?";
+		String sql="update tb_user set pwd='12345' where user=?";
 		Connection conn=Connect.getConnect();
 		PreparedStatement pasmt;
 		try {
@@ -62,10 +61,10 @@ public class deluserservlet extends HttpServlet {
 			int re=pasmt.executeUpdate();
 			if(re>0)
 			{
-				System.out.println("数据删除成功");
-				response.sendRedirect("findAllservlet");
+				request.setAttribute("delback", "密码重置成功！");
+				request.getRequestDispatcher("findAllservlet").forward(request, response);
 			}else {
-				request.setAttribute("delback", "删除失败，请重试！！！");
+				request.setAttribute("delback", "密码重置失败！");
 				request.getRequestDispatcher("findAllservlet").forward(request, response);
 			}
 		} catch (SQLException e) {
@@ -74,7 +73,6 @@ public class deluserservlet extends HttpServlet {
 		}finally {
 			Connect.closeConnect(conn);
 		}
-		
 	}
 
 }
