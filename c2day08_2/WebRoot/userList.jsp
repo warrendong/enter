@@ -10,6 +10,17 @@
     		color: red;
     	}
     </style>
+    <script type="text/javascript">
+    	function doDelete(id){
+			var r = window.confirm("确认删除数据吗？");
+			if(r){
+				window.location.href="delete.do?id="+id;
+			}
+        }
+    	function toUpdate(id){
+			window.location.href="findById.do?id="+id;
+        }
+    </script>
   </head>
   <body>    
     <h1>账号列表</h1>   
@@ -31,6 +42,8 @@
     		</c:choose>
     		</li>
     	</ul>
+    	<input type="button" value="删除" onclick="doDelete(${u.id})"/>
+    	<input type="button" value="编辑"  onclick="toUpdate(${u.id})"/>
     	<hr/>
     </c:forEach>
   </body>

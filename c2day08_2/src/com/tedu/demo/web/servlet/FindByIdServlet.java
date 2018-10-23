@@ -1,8 +1,8 @@
 package com.tedu.demo.web.servlet;
 
+
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,22 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.tedu.demo.dao.UserDao;
 import com.tedu.demo.entity.User;
-
-public class FindAllServlet extends HttpServlet{
+/**
+ * 根据ID查询账号
+ */
+public class FindByIdServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//获取用户删除数据的id
+		String strId = request.getParameter("id");
+		int id = Integer.parseInt(strId);
+		
+		//根据id查询账号
 		UserDao userDao = new UserDao();
 		try {
-			List<User> list = userDao.findAll();
-			//Servlet与JSP数据通信
-			request.setAttribute("list", list);
-			//请求转发
-			request.getRequestDispatcher("userList.jsp").forward(request, response);
+			User user = userDao.findById(id);
+			request.setAttribute("user", user);
+			request.getRequestDispatcher("update.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			response.sendRedirect("error.jsp");
 		}
+		
 	}
+
 }

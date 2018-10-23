@@ -51,13 +51,13 @@ public class updateservlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		String name=request.getParameter("user");
-		String sql="update tb_user set pwd='12345' where user=?";
+		int id=Integer.parseInt(request.getParameter("id"));
+		String sql="update tb_user set pwd='12345' where id=?";
 		Connection conn=Connect.getConnect();
 		PreparedStatement pasmt;
 		try {
 			pasmt = conn.prepareStatement(sql);
-			pasmt.setString(1,name);
+			pasmt.setInt(1,id);
 			int re=pasmt.executeUpdate();
 			if(re>0)
 			{
