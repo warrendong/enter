@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- 
+    Servlet的映射路径
+    login.do 与 LoginServlet 之间的对应关系
+   -->
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.tedu.demo.web.servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RegistServlet</servlet-name>
+		<servlet-class>com.tedu.demo.web.servlet.RegistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegistServlet</servlet-name>
+		<url-pattern>/regist.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FindAllServlet</servlet-name>
+		<servlet-class>com.tedu.demo.web.servlet.FindAllServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FindAllServlet</servlet-name>
+		<url-pattern>/findAll.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteServlet</servlet-name>
+		<servlet-class>com.tedu.demo.web.servlet.DeleteServlet</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>DeleteServlet</servlet-name>
+		<url-pattern>/delete.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FindByIdServlet</servlet-name>
+		<servlet-class>com.tedu.demo.web.servlet.FindByIdServlet</servlet-class>
+	</servlet>
+  <servlet>
+    <servlet-name>UpdateServlet</servlet-name>
+    <servlet-class>com.tedu.demo.web.servlet.UpdateServlet</servlet-class>
+  </servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>FindByIdServlet</servlet-name>
+		<url-pattern>/findById.do</url-pattern>
+	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateServlet</servlet-name>
+    <url-pattern>/update.do</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>FindByPageServlet</servlet-name>
+    <servlet-class>com.tedu.demo.web.servlet.FindByPageServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>FindByPageServlet</servlet-name>
+    <url-pattern>/findByPage.do</url-pattern>
+  </servlet-mapping>
+
+</web-app>

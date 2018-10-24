@@ -1,0 +1,104 @@
+day08
+==============================
+Java Web
+Servlet JSP
+
+前端----->(服务器)------>Servlet\JSP------>JDBC----->DB
+
+登录业务功能：
+   登录页（HTML、JSP）
+   接收登录请求（Servlet,接收登录用户的账号和密码，调用JDBC）
+   登录数据访问（JDBC，根据账号和密码查询数据）
+   
+JSP
+login.jsp---->doLogin.jsp(接数据，访问数据库)
+jsp:HTML CSS JavaScript Java 逻辑处理  访问数据库
+
+JSP + JavaBean Model1
+login.jsp---->doLogin.jsp---->UserDao
+                  |---->成功，跳转到main.jsp
+                  |---->失败，跳转到login.jsp
+                  
+JSP + Servlet + JavaBean Model2
+login.jsp---->LoginServlet---->UserDao
+                  |---->成功，跳转到main.jsp
+                  |---->失败，跳转到login.jsp
+                  
+JSP:只做页面、视图
+Servlet:接收请求 控制调用哪些数据处理 控制处理结果 控制用户在系统的走向 控制器
+JavaBean:(java类，Entity、Dao)模型
+模型（Model）视图(View)控制器(Controller)组合
+MVC
+
+Servlet:运行在特定容器中的组件规范，基于请求和响应的功能组件
+http://192.168.54.2:80/c2day07/login.html
+
+JSP:
+* JSP基本语法
+* JSP指令
+* EL
+* JSTL标签
+
+* JSP基本语法
+  1、JSP文件扩展名.jsp
+  2、JSP中直接书写html,css,js
+  3、JSP可以写JAVA代码段
+    <% %>
+* JSP指令
+   page指令：<%@ page %>,设置页面的全局属性
+   include指令<%@ include %>，静态包含
+   taglib指令<%@ taglib %>，导入其他标签库
+   
+* JSP内置对象(9)：
+    out-------------->JspWriter    
+    pageContext------>PageContext
+    request---------->HttpServletRequest    
+    session---------->HttpSession
+    application------>ServletContext   
+    response--------->HttpServletResponse
+    config----------->ServletConfig
+    page------------->Object
+    exception-------->Exception(处理错误的JSP中使用  page指令中 isErrorPage="true")
+   
+* EL 表达式语言 ${},替换JSP中的java代码
+     pageContext------>PageContext
+     request---------->HttpServletRequest    
+     session---------->HttpSession
+     application------>ServletContext 
+     ${age}
+     EL中常用内置对象：
+        pageScope requestScope sessionScope applicationScope
+        
+* JSTL标签  用来替换JSP中的java代码（显示数据， 处理逻辑，流程控制，迭代数组，集合。。。）
+  Java Standard Tag Language
+  
+  <c:forEach>---->JSP引擎，通过标签库描述符文件,查找到对应的java类,调用该类
+  JSP中指定使用哪个标签库描述符文件：taglib指令
+    项目中导入该标签对应的jar
+    
+  <c:if>判断
+  <c:choose>
+  	<c:when></c:when>
+  	<c:otherwise></c:otherwise>
+  </c:choose>
+  <c:forEach>
+    
+
+账号管理系统：
+创建数据库：create database llxy default charset utf8;
+应用数据库：use llxy;
+创建表：
+create table t_user(
+	id int(4) primary key auto_increment,
+	username varchar(20),
+	password varchar(20),
+	email varchar(50),
+	phone varchar(20),
+	type char(1)    	
+); 
+
+
+
+
+
+
