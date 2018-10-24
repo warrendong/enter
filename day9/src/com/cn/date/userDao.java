@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sound.midi.Patch;
+
 import com.cn.pack.userinfo;
 
 
@@ -34,13 +36,14 @@ public class userDao {
 		Connect.closeConnect(conn);
 		return list;
 	}
-	public List<userinfo> findper(int id) throws SQLException{
+	public static List<userinfo> findper(int id) throws SQLException{
 		List<userinfo> list=new ArrayList<userinfo>();
 		String sql="select * from tb_user where id=?";
 		Connection conn=null;
 		conn=Connect.getConnect();
-		Statement stmt=conn.createStatement();
-		ResultSet re=stmt.executeQuery(sql);
+		PreparedStatement pst=conn.prepareStatement(sql);
+		pst.setInt(1, id);
+		ResultSet re=pst.executeQuery();
 		while(re.next()){
 			userinfo user=new userinfo();
 			user.setId(re.getInt("id"));

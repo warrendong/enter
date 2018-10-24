@@ -70,6 +70,7 @@ public class Loginservlet extends HttpServlet {
 		String sql="select id,card from tb_user where user=? and pwd=?";
 		boolean result=false;
 		int foll=0;
+		int id=0;
 		try {
 			PreparedStatement pre=conn.prepareStatement(sql);
 			pre.setString(1, name);
@@ -82,6 +83,7 @@ public class Loginservlet extends HttpServlet {
 				if(card==1) {
 					foll=1;
 				}
+				id=rs.getInt("id");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -90,11 +92,18 @@ public class Loginservlet extends HttpServlet {
 			Connect.closeConnect(conn);
 		}
 		if(result) {
-			List<userinfo> list=
+			try {
+				List<userinfo> list=userDao.findper(id);
+				request.setAttribute("list", list);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if(foll==1)
 				response.sendRedirect("adminsucc.jsp");
 			else
-				response.sendRedirect("loginsucc.jsp");
+				//response.sendRedirect("loginsucc.jsp");
+				request.getRequestDispatcher("loginsucc.jsp").forward(request, response);
 		}else {
 //			HttpSession faSession =request.getSession();
 //			failback fback=new failback();
