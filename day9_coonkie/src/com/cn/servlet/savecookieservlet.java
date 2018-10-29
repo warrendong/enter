@@ -33,8 +33,9 @@ public class savecookieservlet extends HttpServlet {
 		String  str="I like you !!!";
 		Cookie cookie=new Cookie("test", str);
 		cookie.setMaxAge(7*24*60*60);
+		
 		response.addCookie(cookie);
-		response.sendRedirect("success.jsp");
+		response.sendRedirect("sucess.jsp");
 	}
 
 }
