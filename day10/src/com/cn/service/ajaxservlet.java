@@ -42,7 +42,13 @@ public class ajaxservlet extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		String userName = request.getParameter("username");
+		System.out.println(userName);
+		if("aaaaaa".equals(userName)){
+			response.getWriter().print("e");
+		}else{
+			response.getWriter().print("s");
+		}
 		
 	}
 

@@ -22,9 +22,9 @@
   <!--<video src="audio/snow.mp4" width="100%" autoplay loop muted></video>-->
   <div class="container">
     <div class="panel rt">
-      <form id="form-register" method="post" action="">
+      <form id="form-register" method="post" action="../registerInf">
         <div class="txt">
-          <p>新用户注册
+          <p>新用户注册<font color="red">${requestScope.failback}</font>
             <span>
               <a href="login.html">直接登录</a>
             </span>
@@ -57,7 +57,7 @@
         </div>
         <div class="form-group">
           <label></label>
-          <input type="button" value="提交注册信息" id="bt-register"/>
+          <input type="submit" value="提交注册信息" id="bt-register"/>
         </div>
       </form>
     </div>

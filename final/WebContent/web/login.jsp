@@ -24,7 +24,7 @@
             <div class="txt">
                 <p>登录学子商城
                     <span>
-                        <a href="register.html">新用户注册</a>
+                        <a href="register.jsp">新用户注册</a>
                     </span>
                 </p>
                 <div class="text">
