@@ -58,7 +58,7 @@ public class registerInf extends HttpServlet {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			response.sendRedirect("/web/500.jsp");
+			response.sendRedirect("web/500.jsp");
 		}finally {
 			Connect.closeConnect(conn);
 		}
@@ -67,7 +67,7 @@ public class registerInf extends HttpServlet {
 		}
 		else {
 			request.setAttribute("failback", "◊¢≤· ß∞‹£¨«Î÷ÿ ‘£°£°£°");
-			request.getRequestDispatcher("/web/register.jsp").forward(request, response);
+			request.getRequestDispatcher("web/register.jsp").forward(request, response);
 		}
 		
 	}

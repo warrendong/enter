@@ -20,9 +20,9 @@
 </header>
 <div id="container">
     <div id="cover" class="rt">
-        <form id="login-form" method="post" name="form1">
+        <form id="login-form" method="post" name="form1" action="../logininfo">
             <div class="txt">
-                <p>登录学子商城
+                <p>登录学子商城<font color="red">${requestScope.failback}</font>
                     <span>
                         <a href="register.jsp">新用户注册</a>
                     </span>
@@ -40,7 +40,7 @@
                     <input type="checkbox" class="checkbox" id="ck_rmbUser" value="0">自动登录
                     <span>忘记密码？</span>
                 </div>
-                <input class="button_login" type="button" value="登录" id="bt-login" onclick="Save()"/>
+                <input class="button_login" type="submit" value="登录" id="bt-login" onclick="Save()"/>
             </div>
         </form>
     </div>
