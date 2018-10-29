@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="c2tsm"
+  id="myeclipse.1540782928716"
+  context-root="/c2tsm"
+  j2ee-spec="5.0"
+  archive="c2tsm.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

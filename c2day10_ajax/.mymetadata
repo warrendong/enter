@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="c2day10_ajax"
+  id="myeclipse.1540795773140"
+  context-root="/c2day10_ajax"
+  j2ee-spec="5.0"
+  archive="c2day10_ajax.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

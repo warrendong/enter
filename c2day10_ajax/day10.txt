@@ -1,0 +1,7 @@
+day10
+==================================
+AJAX
+用来发送异步请求的技术
+Asynchronous JavaScript And XML;
+该技术的核心是JavaScript
+在JS中，XMLHttpRequest对象，专门用来发送异步请求的。
