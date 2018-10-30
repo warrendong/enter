@@ -11,55 +11,7 @@
 </head>
 <body>
 <!-- 页面顶部-->
-<header id="top">
-    <div id="logo" class="lf">
-        <img src="../images/header/logo.png" alt="logo"/>
-    </div>
-    <div id="top_input" class="lf">
-        <input id="input" type="text" placeholder="请输入您要搜索的内容"/>
-        <div class="seek" tabindex="-1">
-            <div class="actived" ><span>分类搜索</span> <img src="../images/header/header_normal.png" alt=""/></div>
-            <div class="seek_content" >
-                <div id="shcy" >生活餐饮</div>
-                <div id="xxyp" >学习用品</div>
-                <div id="srdz" >私人订制</div>
-            </div>
-        </div>
-        <a href="javascript:void(0);" class="rt"><img id="search" src="../images/header/search.png" alt="搜索"/></a>
-    </div>
-    <div class="rt">
-        <ul class="lf">
-            <li><a href="myCollect.html" title="我的收藏"><img class="care" src="../images/header/care.png" alt=""/></a><b>|</b></li>
-            <li><a href="myOrder.html" title="我的订单"><img class="order" src="../images/header/order.png" alt=""/></a><b>|</b></li>
-            <li><a href="cart.html" title="我的购物车"><img class="shopcar" src="../images/header/shop_car.png" alt=""/></a><b>|</b></li>
-            <li><a href="lookforward.html">帮助</a><b>|</b></li>
-            <li>
-            	<%
-            		String user = (String)session.getAttribute("name");
-            	    if(user==null)
-            	    {
-            	%>
-            	<a href="login.jsp">登录</a>
-            	<%
-            		}else{	
-                 %>
-                 <%=user %>
-                 <%
-            		}
-                 %>
-            </li>
-        </ul>
-    </div>
-</header>
-<!-- nav主导航-->
-<nav id="nav">
-    <ul>
-        <li><a href="index.html" class="acti">首页</a></li>
-        <li><a href="item_food.html">生活餐饮</a></li>
-        <li><a href="itemCat.html">学习用品</a></li>
-        <li><a href="lookforward.html">私人定制</a></li>
-    </ul>
-</nav>
+<%@ include file="head.jsp" %>
 <!-- banner部分-->
 <div class="ck-slide">
     <ul class="ck-slide-wrapper">

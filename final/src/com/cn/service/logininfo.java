@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import com.cn.dbdata.Connect;
 import com.cn.entity.User;
+
 
 /**
  * Servlet implementation class logininfo
@@ -37,8 +40,9 @@ public class logininfo extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
+		List<User> list=new ArrayList<User>();
 		String name=request.getParameter("lname");
-		String pwd=request.getParameter("password");
+		String pwd=request.getParameter("lwd");
 		Connection conn=Connect.getConnect();
 		String sql="select id,phone,email,created,updated from ajia_user where username=? and password=?";
 		int foll=0;
@@ -59,6 +63,7 @@ public class logininfo extends HttpServlet {
 				user.setPhone(rs.getString("phone"));
 				user.setCreated(rs.getTimestamp("created"));
 				user.setUpdated(rs.getTimestamp("updated"));
+				list.add(user);
 				session.setAttribute("name", name);
 				response.sendRedirect("web/index.jsp");
 			}else {
