@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -30,7 +31,22 @@
             <li><a href="myOrder.jsp" title="我的订单"><img class="order" src="../images/header/order.png" alt=""/></a><b>|</b></li>
             <li><a href="../cartinfo" title="我的购物车"><img class="shopcar" src="../images/header/shop_car.png" alt=""/></a><b>|</b></li>
             <li><a href="lookforward.jsp">帮助</a><b>|</b></li>
-            <li><a href="login.jsp">登录</a></li>
+            <li>
+            <% 
+            	String name=(String)session.getAttribute("name");
+	             if(name==null)
+	             {
+            %>
+            	<a href="login.jsp">登录</a>
+            <%
+            	}else{
+            %>
+            <%=name%>
+            <%
+            	}
+            %>
+            
+            </li>
         </ul>
     </div>
 </header>
